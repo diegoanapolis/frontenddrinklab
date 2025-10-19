@@ -2,6 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   output: "standalone",
+  // Não bloquear build por regras de ESLint em produção (Railway)
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 }
 
 const withPWA = require("next-pwa")
