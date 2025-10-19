@@ -3,7 +3,7 @@ import { BEVERAGE_TYPES } from "@/lib/constants";
 
 export const profileSchema = z.object({
   beverageType: z.enum(BEVERAGE_TYPES, {
-    required_error: "Selecione o tipo de bebida",
+    message: "Selecione o tipo de bebida",
   }),
   labelAbv: z
     .number({ invalid_type_error: "Informe um número" })
@@ -19,7 +19,7 @@ export const waterTempSchema = z.object({
     "Potável/torneira",
     "Deionizada/Destilada (quando disponível)",
   ], {
-    required_error: "Selecione o tipo de água",
+    message: "Selecione o tipo de água",
   }),
   conductivity: z.number().optional(),
   temperature: z
