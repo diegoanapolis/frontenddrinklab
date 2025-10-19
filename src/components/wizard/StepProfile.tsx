@@ -2,7 +2,7 @@
 import React from "react"
 import { BEVERAGE_TYPES } from "@/lib/constants"
 import { useForm } from "react-hook-form"
-import { z } from "zod"
+// removed unused import 'z'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { profileSchema, ProfileData } from "@/lib/schemas"
 import Link from "next/link"
@@ -10,7 +10,7 @@ import Link from "next/link"
 export default function StepProfile({ onNext, initialData }: { onNext: (data: ProfileData) => void; initialData?: ProfileData }) {
   const { register, handleSubmit, formState: { errors } } = useForm<ProfileData>({
     resolver: zodResolver(profileSchema),
-    defaultValues: initialData ?? { beverageType: undefined as any },
+    defaultValues: (initialData || {}) as Partial<ProfileData>,
   });
 
   // helper to accept both "," and "." as decimal, giving precedence to "," when both exist
