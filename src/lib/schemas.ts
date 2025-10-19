@@ -6,7 +6,7 @@ export const profileSchema = z.object({
     message: "Selecione o tipo de bebida",
   }),
   labelAbv: z
-    .number({ invalid_type_error: "Informe um número" })
+    .number()
     .min(30, "Mínimo 30% v/v")
     .max(60, "Máximo 60% v/v")
     .optional(),
@@ -23,7 +23,7 @@ export const waterTempSchema = z.object({
   }),
   conductivity: z.number().optional(),
   temperature: z
-    .number({ invalid_type_error: "Informe a temperatura" })
+    .number()
     .min(20, "Mínimo 20 °C")
     .max(50, "Máximo 50 °C"),
 });
