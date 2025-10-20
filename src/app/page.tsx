@@ -1,46 +1,9 @@
 "use client"
 import Link from "next/link"
-import React, { useEffect, useState } from "react"
-import { useRouter } from "next/navigation"
+import React from "react"
 import { Beaker, LineChart, BookOpen, Info } from "lucide-react"
 
 export default function Home() {
-  const [showOnboarding, setShowOnboarding] = useState(false)
-  const router = useRouter()
-
-  useEffect(() => {
-    try {
-      const seen = localStorage.getItem("onboardingSeen")
-      setShowOnboarding(!seen)
-    } catch {
-      setShowOnboarding(true)
-    }
-  }, [])
-
-  const completeOnboarding = () => {
-    try { localStorage.setItem("onboardingSeen", "1") } catch {}
-    setShowOnboarding(false)
-  }
-
-  const cards = [
-    {
-      title: "Objetivo",
-      text: "Ferramenta preventiva para triagem de bebidas destiladas. Não confirma adulteração.",
-    },
-    {
-      title: "Medições",
-      text: "Você medirá temperatura, densidade (massas) e tempos de escoamento com um funil padronizado.",
-    },
-    {
-      title: "Precisão",
-      text: "Evite CVs altos: massas água/amostra <2%, tempos água/amostra <3%.",
-    },
-    {
-      title: "Resultados",
-      text: "Mostramos indicadores relativos, aderência ao binário e triagem de risco. Use com bom senso.",
-    },
-  ]
-
   return (
     <div className="p-4 space-y-4">
       <h1 className="text-xl font-bold">Triagem de composição de destilados</h1>
@@ -68,31 +31,7 @@ export default function Home() {
           <span>Sobre</span>
         </Link>
       </div>
-
-      {showOnboarding && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur flex items-end md:items-center md:justify-center">
-          <div className="bg-white rounded-t-2xl md:rounded-2xl p-4 w-full md:max-w-md">
-            <h2 className="text-lg font-semibold mb-2">Boas-vindas</h2>
-            <div className="overflow-x-auto no-scrollbar">
-              <div className="flex gap-3">
-                {cards.map((c, i) => (
-                  <div key={i} className="min-w-[75%] border rounded-lg p-3">
-                    <div className="text-sm font-medium">{c.title}</div>
-                    <div className="text-sm text-neutral-700 mt-1">{c.text}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="flex gap-2 mt-3">
-              <button onClick={completeOnboarding} className="border rounded-lg py-2 px-4 flex-1">Entendi</button>
-              <button
-                onClick={() => { completeOnboarding(); router.push("/medir") }}
-                className="bg-black text-white rounded-lg py-2 px-4 flex-1"
-              >Começar</button>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Removido o overlay de Boas-vindas (onboarding) */}
       <div className="space-y-2 mt-2">
         <p className="text-sm text-neutral-700 text-justify">Para o exame, <span className="font-bold">são necessários</span>: seringa de 20 mL (de farmácia); balança com pelo menos uma casa decimal (0,1 g); e termômetro. Leia a <Link href="/medir" className="underline">Metodologia</Link> antes de iniciar o exame.</p>
         <p className="text-sm text-red-600 font-bold text-justify">Avisos importantes:</p>
