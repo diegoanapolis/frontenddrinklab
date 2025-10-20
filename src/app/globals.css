@@ -17,7 +17,37 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    /* foreground e variáveis de marca/label se tornam brancas no modo escuro */
+    --foreground: #ffffff;
+    --color-brand: #ffffff;
+    --color-label: #ffffff;
+  }
+
+  /* Textos com classes neutras/cinza e marca tornam-se brancos */
+  .text-neutral-700,
+  .text-neutral-600,
+  .text-neutral-500,
+  .text-neutral-400,
+  .text-gray-900,
+  .text-gray-800,
+  .text-gray-700,
+  .text-gray-600,
+  .text-gray-500,
+  .text-gray-400,
+  .text-brand {
+    color: #ffffff !important;
+  }
+
+  /* Contornos de botões e campos ficam brancos */
+  .border,
+  .border-neutral-200,
+  .border-neutral-300,
+  .border-neutral-400,
+  .border-gray-200,
+  .border-gray-300,
+  .border-gray-400,
+  .border-brand {
+    border-color: #ffffff !important;
   }
 }
 
